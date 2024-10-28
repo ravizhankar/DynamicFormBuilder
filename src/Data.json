@@ -1,0 +1,173 @@
+  {
+  "title": "Form Viewer",
+  "isformsubmitted": true,
+  "pages": [
+    {
+      "title": "Application Information",
+      "isformsubmitted": false,
+      "elements": [
+        {
+          "id": "HeaderText1",
+          "type": "headertext",
+          "label": "Basic Information",
+          "required": true,
+          "minLength": 1,
+          "maxLength": 50,
+          "pattern": "^[A-Za-z]+(([' -][A-Za-z])?[A-Za-z]*)*$",
+          "value": ""
+        },
+        {
+          "id": "firstName",
+          "type": "text",
+          "label": "First Name",
+          "required": true,
+          "minLength": 1,
+          "maxLength": 50,
+          "pattern": "^[A-Za-z]+(([' -][A-Za-z])?[A-Za-z]*)*$",
+          "value": "Shriya"
+        },
+        {
+          "id": "MiddleName",
+          "type": "text",
+          "label": "Middle Name",
+          "required": false,
+          "pattern": "^[A-Za-z]+(([' -][A-Za-z])?[A-Za-z]*)*$",
+          "value": "R"
+        },
+        {
+          "id": "LastName",
+          "type": "text",
+          "label": "Last Name",
+          "required": true,
+          "value": "Ravi Prakash"
+        },
+        {
+          "id": "gender",
+          "type": "radio",
+          "label": "Gender",
+          "required": true,
+          "value": "",
+          "options": [
+            {
+              "value": "male",
+              "label": "Male"
+            },
+            {
+              "value": "female",
+              "label": "Female"
+            },
+            {
+              "value": "other",
+              "label": "Other"
+            }
+          ]
+        },
+       
+        {
+          "id": "country",
+          "type": "select",
+          "label": "Country",
+          "required": true,
+          "value": "",
+          "options": [
+            {
+              "value": "us",
+              "label": "United States"
+            },
+            {
+              "value": "ca",
+              "label": "Canada"
+            },
+            {
+              "value": "uk",
+              "label": "United Kingdom"
+            },
+            {
+              "value": "au",
+              "label": "Australia"
+            }
+          ]
+        },
+        {
+          "id": "HeaderText2",
+          "type": "headertext",
+          "label": "Contact Details",
+          "required": true,
+          "minLength": 1,
+          "maxLength": 50,
+          "pattern": "^[A-Za-z]+(([' -][A-Za-z])?[A-Za-z]*)*$",
+          "value": ""
+        },
+        {
+          "id": "PhoneNumber",
+          "type": "text",
+          "label": "Contact Number",
+          "required": true,
+          "value": ""
+        },
+        {
+          "id": "email",
+          "type": "text",
+          "label": "Email Address",
+          "required": true,
+          "value": ""
+        }
+      ]
+    },
+   
+    {
+      "title": "Communication Details",
+      "isformsubmitted": false,
+      "elements": [
+        {
+          "id": "CurrentAddress",
+          "type": "text",
+          "label": "Door No",
+          "required": true,
+          "value": ""
+        },
+        {
+          "id": "CurrentAddress1",
+          "type": "text",
+          "label": "Address Line 1",
+          "required": true,
+          "value": ""
+        },
+        {
+          "id": "CurrentAddress2",
+          "type": "text",
+          "label": "Address Line 2",
+          "required": false,
+          "value": ""
+        },
+        {
+          "id": "PinCpde",
+          "type": "text",
+          "label": "Pin Code",
+          "required": true,
+          "value": ""
+        }
+      ]
+    },
+    {
+      "title": "Education Details",
+      "isformsubmitted": false,
+      "elements": [
+        {
+          "id": "CollegeName",
+          "type": "text",
+          "label": "College Name",
+          "required": true,
+          "value": ""
+        },
+        {
+          "id": "UniversityName",
+          "type": "text",
+          "label": "University",
+          "required": true,
+          "value": ""
+        }
+      ]
+    }
+  ]
+}

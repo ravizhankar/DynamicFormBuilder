@@ -1,0 +1,138 @@
+
+
+/* Create three equal columns that floats next to each other */
+.ToolBoxcolumn {
+  float: left;
+  width: 33.33%;
+  padding: 10px;  
+  border: 1px solid black;
+}
+
+.FormBuildercolumn {
+  float: left;
+  width: 44.33%;
+  padding: 10px;  
+  border: 1px solid black;
+}
+
+.ctrlborder{
+  border: 1px solid black;
+}
+
+
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+th,
+td {
+  border: 1px solid black;  
+  text-align: center;
+}
+th {
+  background-color: #f2f2f2;
+}
+
+
+.tab-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.tab-title {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  margin: 0 48px 1rem 48px; /* 48px margin on left and right for a 96px total gap */
+  background: #f1f1f1;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1.25rem;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s; /* Smooth transition for background and color */
+}
+
+.tab-title:hover {
+  background: #ddd; /* Slightly darker background on hover */
+}
+
+.tab-title.active {
+  background: #4CAF50 ;
+  color: white;
+  border-color: #007bff;
+}
+
+
+.navigation-buttons {
+  display: flex;
+  justify-content: space-between; /* Space out the buttons */
+  margin-top: 1rem; /* Space above the navigation buttons */
+  padding: 0 1rem; /* Padding on the left and right */
+}
+
+.nav-button {
+  padding: 0.75rem 1.5rem; /* Comfortable padding */
+  border: none;
+  border-radius: 4px; /* Rounded corners */
+  background-color: #007bff; /* Primary button color */
+  color: white;
+  font-size: 1rem; /* Font size for readability */
+  font-weight: bold; /* Make text bold */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s, transform 0.3s; /* Smooth transition */
+}
+
+.nav-button:hover {
+  background-color: #0056b3; /* Darker background on hover */
+  transform: scale(1.05); /* Slightly enlarge the button on hover */
+}
+
+.nav-button:disabled {
+  background-color: #ccc; /* Greyed out background for disabled state */
+  color: #666; /* Darker text color for disabled state */
+  cursor: not-allowed; /* Change cursor to indicate disabled state */
+  transform: none; /* No scaling for disabled state */
+}
+
+.center {
+  text-align: center; /* Center the text horizontally */
+  margin: 2rem 0; /* Add vertical spacing above and below the heading */
+  font-size: 2.5rem; /* Increase the font size for emphasis */
+  font-weight: bold; /* Make the font bold */
+  color: #333; /* Set a color that contrasts well with the background */
+  letter-spacing: 1px; /* Add spacing between letters for better readability */
+}
+
+
+.thank-you-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.OverIndexhighlighted {
+  /*border: 2px dashed #ff9800; */
+  background-color: #ffe0b2;  /* A light orange background for visibility */
+}
+
+.Selectedhighlighted {
+  /*border: 2px dashed #0741ff !important;  */
+  background-color: #bfdbff !important;  /* A light orange background for visibility */
+}

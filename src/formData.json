@@ -1,0 +1,204 @@
+{
+  "title": "Form Viewer",
+  "pages": [
+    {
+      "title": "Application Information",
+      "isformsubmitted": true,
+      "sections": [
+        {
+          "title": "Basic Information",
+          "elements": [
+            {
+              "id": "firstName",
+              "type": "text",
+              "label": "First Name",
+              "required": true,
+              "minLength": 1,
+              "maxLength": 50,
+              "pattern": "^[A-Za-z]+(([' -][A-Za-z])?[A-Za-z]*)*$",
+              "value": "John"
+            },
+            {
+              "id": "MiddleName",
+              "type": "text",
+              "label": "Middle Name",
+              "required": true
+            },
+            {
+              "id": "LastName",
+              "type": "text",
+              "label": "Last Name",
+              "required": false
+            },
+            {
+              "id": "gender",
+              "type": "radio",
+              "label": "Gender",
+              "required": true,
+              "options": [
+                { "value": "male", "label": "Male" },
+                { "value": "female", "label": "Female" },
+                { "value": "other", "label": "Other" }
+              ]
+            },
+            {
+              "id": "country",
+              "type": "select",
+              "label": "Country",
+              "required": true,
+              "options": [
+                { "value": "us", "label": "United States" },
+                { "value": "ca", "label": "Canada" },
+                { "value": "uk", "label": "United Kingdom" },
+                { "value": "au", "label": "Australia" }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "My Contact Details",
+          "elements": [
+            {
+              "id": "PhoneNumber",
+              "type": "number",
+              "label": "Contact Number",
+              "required": true
+            },
+
+            {
+              "id": "email",
+              "type": "email",
+              "label": "Email Address",
+              "required": true
+            },
+            {
+              "id": "AadharNumber",
+              "type": "number",
+              "label": "Aadhar Number",
+              "required": true
+            }
+          ]
+        },
+        {
+          "title": "Parent Details",
+          "elements": [
+            {
+              "id": "ParentName",
+              "type": "text",
+              "label": "Parent Name",
+              "required": true
+            },
+            {
+              "id": "ParentEmail",
+              "type": "email",
+              "label": "Email Address",
+              "required": true
+            },
+            {
+              "id": "ParentContactNumber",
+              "type": "number",
+              "label": "Contact Number",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Communication Details",
+      "isformsubmitted": false,
+      "sections": [
+        {
+          "title": "Current Address",
+          "elements": [
+            {
+              "id": "CurrentAddress",
+              "type": "text",
+              "label": "Door No",
+              "required": true
+            },
+            {
+              "id": "CurrentAddress1",
+              "type": "text",
+              "label": "Address Line 1",
+              "required": true
+            },
+            {
+              "id": "CurrentAddress2",
+              "type": "text",
+              "label": "Address Line 2",
+              "required": true
+            }
+          ]
+        },
+        {
+          "title": "Permanent Address",
+          "elements": [
+            {
+              "id": "PermanentAddress",
+              "type": "text",
+              "label": "Permanent Address",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Education Details",
+      "isformsubmitted": false,
+      "sections": [
+        {
+          "title": "X details",
+          "elements": [
+            {
+              "id": "SchoolName",
+              "type": "text",
+              "label": "School Name",
+              "required": true
+            }
+          ]
+        },
+        {
+          "title": "XII Details",
+          "elements": [
+            {
+              "id": "CollegeName",
+              "type": "text",
+              "label": "College Name",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Pay Details",
+      "isformsubmitted": false,
+      "sections": [
+        {
+          "title": "Payment",
+          "elements": [
+            {
+              "id": "TransactionId",
+              "type": "text",
+              "label": "Transaction Id",
+              "required": true
+            }
+          ]
+        },
+        {
+          "title": "XII Details",
+          "elements": [
+            {
+              "id": "CollegeName",
+              "type": "text",
+              "label": "College Name",
+              "required": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
