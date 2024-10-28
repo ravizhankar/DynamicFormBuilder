@@ -310,7 +310,7 @@ const FormBuilder: React.FC = () => {
         minDate: "",
         maxDate: "",
         isMultiple: false,
-        maxFiles: 0,
+        maxFiles: 1,
         minFiles: 0,
         maxSizeInMB: 2,
         allowedFileTypes: [],

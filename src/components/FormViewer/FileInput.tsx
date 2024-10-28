@@ -30,7 +30,7 @@ const FileInput: React.FC<FormElement> = (formelementobj) => {
         const totalFiles = newFiles.length + fileNames.length;
 
         // Check if maxFiles is set to 0
-        if (formelementobj.maxFiles === 0) {
+        if (formelementobj.isMultiple && formelementobj.maxFiles === 0) {
             errors.push(`The maximum number of files allowed is set to 0`);
             return errors; // Skip further validation since upload is disabled
         }

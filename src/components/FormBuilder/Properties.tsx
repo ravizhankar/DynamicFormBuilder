@@ -74,9 +74,12 @@ const Properties = ({
 
   const handleMultipleFilesCheckboxChange = (
     e: React.ChangeEvent<HTMLInputElement>
-  ) => {
+  ) => {    
     const { name, checked } = e.target;
     setSelectedElement({ ...selectedElement, [name]: checked });
+    if (!checked) {
+      setSelectedElement({ ...selectedElement, maxFiles: 1 });
+    }
   };
 
   const handlePatternDropdownChange = (
