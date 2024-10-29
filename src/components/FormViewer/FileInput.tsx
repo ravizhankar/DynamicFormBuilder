@@ -10,10 +10,13 @@ const FileInput: React.FC<FormElement> = (formelementobj) => {
     const [fileNames, setFileNames] = useState<string[]>([]);
     const [fileLinks, setFileLinks] = useState<string[]>([]);
     const [progressList, setProgressList] = useState<number[]>([]);
-    const [loading, setLoading] = useState(false); // Loading state
+    const [loading, setLoading] = useState(false);
 
     const progressRef = useRef<number[]>([]);
     const errorMessage = errors[formelementobj.id];
+
+    // Ref for file input
+    const fileInputRef = useRef<HTMLInputElement | null>(null);
 
     interface UploadResponse {
         FileID: number;
@@ -29,18 +32,16 @@ const FileInput: React.FC<FormElement> = (formelementobj) => {
         const errors: string[] = [];
         const totalFiles = newFiles.length + fileNames.length;
 
-        // Default `maxFiles` to 1 if `isMultiple` is false
         const maxFiles = formelementobj.isMultiple ? formelementobj.maxFiles : 1;
 
-        // Check if maxFiles is set to 0
         if (formelementobj.isMultiple && maxFiles === 0) {
             errors.push(`The maximum number of files allowed is set to 0`);
-            return errors; // Skip further validation since upload is disabled
+            return errors;
         }
-        // Check if allowedFileTypes is empty
+
         if (!formelementobj.allowedFileTypes || formelementobj.allowedFileTypes.length === 0) {
-            errors.push(`No allowed file types are selected .`);
-            return errors; // Skip further validation since no valid file types are provided
+            errors.push(`No allowed file types are selected.`);
+            return errors;
         }
 
         if (maxFiles && totalFiles > maxFiles) {
@@ -67,11 +68,10 @@ const FileInput: React.FC<FormElement> = (formelementobj) => {
         return errors;
     };
 
-
     const uploadFile = async (file: File, index: number): Promise<UploadResponse> => {
         const formData = new FormData();
         formData.append('file', file);
-        setLoading(true); // Start loading
+        setLoading(true);
 
         try {
             const response = await axios.post<UploadResponse>(
@@ -95,33 +95,41 @@ const FileInput: React.FC<FormElement> = (formelementobj) => {
             setError(formelementobj.id, `Error uploading ${file.name}.`);
             return { FileID: 0, Location: '', StatusCode: 'Error' };
         } finally {
-            setLoading(false); // Stop loading
+            setLoading(false);
         }
     };
 
     const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
         const newFiles = Array.from(event.target.files || []);
         const validationErrors = validateFiles(newFiles);
-
+        
         if (validationErrors.length > 0) {
             setError(formelementobj.id, validationErrors.join(' '));
             return;
         }
-
+        
         setError(formelementobj.id, '');
         const newProgressList = new Array(newFiles.length).fill(0);
         progressRef.current = [...progressRef.current, ...newProgressList];
         setProgressList([...progressRef.current]);
-
+        
         const uploadedLinks: string[] = [];
         for (const [index, file] of newFiles.entries()) {
             const { Location } = await uploadFile(file, fileNames.length + index);
             if (Location) uploadedLinks.push(Location);
         }
-
+        
+        // Allow duplicate file uploads
         setFileNames((prev) => [...prev, ...newFiles.map((file) => file.name)]);
         setFileLinks((prev) => [...prev, ...uploadedLinks]);
-        setValue(formelementobj.id, [...uploadedLinks]);
+        
+        // Update form value
+        setValue(formelementobj.id, [...fileLinks, ...uploadedLinks]);
+        
+        // Reset the file input
+        if (fileInputRef.current) {
+            fileInputRef.current.value = ''; // Clear the input
+        }
     };
 
     const handleOpenFile = (fileLink: string): void => {
@@ -138,7 +146,6 @@ const FileInput: React.FC<FormElement> = (formelementobj) => {
             `popup=yes, width=${width}, height=${height}, top=${top}, left=${left}, resizable=yes, scrollbars=yes`
         );
     };
-
 
     const handleDeleteFile = (index: number) => {
         const updatedFileNames = fileNames.filter((_, i) => i !== index);
@@ -159,8 +166,6 @@ const FileInput: React.FC<FormElement> = (formelementobj) => {
         } else {
             setValue(formelementobj.id, updatedFileNames);
         }
-
-
     };
 
     return (
@@ -191,10 +196,10 @@ const FileInput: React.FC<FormElement> = (formelementobj) => {
                 <input
                     type="file"
                     id={formelementobj.id}
+                    ref={fileInputRef} // Attach the ref here
                     multiple={formelementobj.isMultiple}
                     onChange={handleFileChange}
                     required={formelementobj.required}
-                    // disabled={formelementobj.maxFiles === 0} // Disable input if maxFiles is 0
                     className="hidden"
                 />
 
@@ -225,7 +230,8 @@ const FileInput: React.FC<FormElement> = (formelementobj) => {
                     </div>
                 )}
 
-                {errorMessage && <span className="text-red-600 text-sm mt-1">{errorMessage}</span>}
+                {/* Show error message if exists */}
+                {errorMessage && <span className="text-red-500 text-sm">{errorMessage}</span>}
             </div>
         </div>
     );

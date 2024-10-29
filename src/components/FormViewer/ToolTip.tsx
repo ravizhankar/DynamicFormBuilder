@@ -18,20 +18,26 @@ const Tooltip: React.FC<TooltipProps> = ({ text, children }) => {
 
       {isVisible && (
         <div
-          className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-1 
-                     bg-gray-800 text-white text-xs rounded-md py-1 px-2 shadow-lg 
-                     transition-opacity duration-200 ease-in-out opacity-90 z-10 
-                     whitespace-nowrap"
-        >
-          {/* Tooltip arrow */}
-          <div
-            className="absolute left-1/2 transform -translate-x-1/2 top-full 
-                       w-2 h-2 bg-gray-800 rotate-45"
-          ></div>
-
-          {/* Tooltip content */}
-          {text}
-        </div>
+        className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 
+                   bg-gray-800 text-white text-sm rounded-lg shadow-lg 
+                   transition-opacity duration-200 ease-in-out opacity-95 z-10 
+                   whitespace-nowrap p-2 flex items-center space-x-1"
+      >
+        {/* Tooltip arrow */}
+        <div
+          className="absolute left-1/2 transform -translate-x-1/2 top-full 
+                     w-2 h-2 bg-gray-800 rotate-45"
+        ></div>
+      
+        {/* Tooltip icon (optional) */}
+        <span className="text-gray-400">
+       
+        </span>
+      
+        {/* Tooltip content */}
+        <span className="text-sm ">{text}</span>
+      </div>
+      
       )}
     </div>
   );

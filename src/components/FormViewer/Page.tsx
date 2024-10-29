@@ -26,7 +26,7 @@ const Page: React.FC<PageProps> = ({ title, elements,pagegridcolumn }) => {
    
 
     return (
-        <div className="rounded-lg p-5 bg-white-100 shadow-md mx-4 sm:mx-8 lg:mx-12">
+        <div className="rounded-lg p-5 bg-white-100  mx-4 sm:mx-8 lg:mx-12">
        <div
     className={`grid gap-3 ${
         pagegridcolumn === 1 
