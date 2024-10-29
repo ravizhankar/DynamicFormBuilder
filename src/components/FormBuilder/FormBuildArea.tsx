@@ -45,7 +45,15 @@ const FormBuildArea = ({
     <>
       <Dropzone>
         <SortableContext items={elements} strategy={rectSortingStrategy}>
-          <div className="grid grid-cols-3 gap-2">
+          <div
+            className={`grid gap-3 ${
+              elements[0].pagegridcolumn === 1
+                ? "grid-cols-1"
+                : elements[0].pagegridcolumn === 2
+                ? "grid-cols-2"
+                : "grid-cols-3"
+            }`}
+          >            
             {elements.map(
               (element) =>
                 element.type !== "pagename" && (
