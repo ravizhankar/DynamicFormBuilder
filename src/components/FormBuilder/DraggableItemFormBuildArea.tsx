@@ -54,7 +54,7 @@ const DraggableItemFormBuildArea = ({
         fontSize: element.type === "pagename" ? "25px" : "",
         backgroundColor: element.type === "pagename" ? "white" : "#f9f9f9",
         transform: CSS.Transform.toString(transform),
-        transition: "transform 500ms ease, background-color 500ms ease",
+        transition: "transform 300ms ease, background-color 500ms ease",
         willChange: "transform",
       }}
       onClick={() => handleElementClick(element)}

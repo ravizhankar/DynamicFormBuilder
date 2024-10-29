@@ -1143,7 +1143,7 @@ const FormBuilder: React.FC = () => {
         )}
 
         {/* Drag Overlay */}
-        <DragOverlay>
+        <DragOverlay dropAnimation={null}>
           {activeDragItem && activeDragItem.search("-") < 0 ? (
             <div className="p-2 bg-blue-100 rounded-md shadow-md">
               {activeDragItem !== "" && GetLabel(activeDragItem)}
