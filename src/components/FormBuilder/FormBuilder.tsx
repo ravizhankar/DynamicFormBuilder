@@ -918,10 +918,10 @@ const FormBuilder: React.FC = () => {
       case "Numbers":
         patternstring = "NUMERIC";
         break;
-      case "AlphaNumeric":
+      case "Alpha numeric":
         patternstring = "ALPHANUMERIC";
         break;
-      case "PhoneNumber":
+      case "Phone number":
         patternstring = "PHONENUMBER";
         break;
       case "Email":

@@ -21,8 +21,8 @@ const Properties = ({
     "None",
     "Alphabets",
     "Numbers",
-    "AlphaNumeric",
-    "PhoneNumber",
+    "Alpha numeric",
+    "Phone number",
     "Email",
     "Aadhar",
     "Text",
@@ -89,7 +89,7 @@ const Properties = ({
     selectedElement.maxLength = 0;
     selectedElement.disbled = false;
     const selectedValue = e.target.value;
-    if (e.target.value === "PhoneNumber") {
+    if (e.target.value === "Phone number") {
       selectedElement.minLength = 10;
       selectedElement.maxLength = 15;
       selectedElement.disbled = true;
@@ -385,7 +385,7 @@ const Properties = ({
         <>
           <div className="mb-4">
             <label className="block font-semibold text-sm mb-1">
-              Page column
+              No. of column in the page
             </label>
             <select
               value={selectedElement.pagegridcolumn}
