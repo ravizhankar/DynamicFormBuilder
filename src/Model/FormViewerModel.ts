@@ -8,6 +8,7 @@ export interface FormPayload {
 export interface page {
   title: string;
   isformsubmitted:boolean;
+  pagegridcolumn?:number;
   elements: FormElement[];
 }
 

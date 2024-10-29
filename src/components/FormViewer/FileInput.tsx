@@ -29,8 +29,11 @@ const FileInput: React.FC<FormElement> = (formelementobj) => {
         const errors: string[] = [];
         const totalFiles = newFiles.length + fileNames.length;
 
+        // Default `maxFiles` to 1 if `isMultiple` is false
+        const maxFiles = formelementobj.isMultiple ? formelementobj.maxFiles : 1;
+
         // Check if maxFiles is set to 0
-        if (formelementobj.isMultiple && formelementobj.maxFiles === 0) {
+        if (formelementobj.isMultiple && maxFiles === 0) {
             errors.push(`The maximum number of files allowed is set to 0`);
             return errors; // Skip further validation since upload is disabled
         }
@@ -40,8 +43,8 @@ const FileInput: React.FC<FormElement> = (formelementobj) => {
             return errors; // Skip further validation since no valid file types are provided
         }
 
-        if (formelementobj.maxFiles && totalFiles > formelementobj.maxFiles) {
-            errors.push(`You can upload a maximum of ${formelementobj.maxFiles} ${formelementobj.maxFiles>1 ? "files" : "file" }.`);
+        if (maxFiles && totalFiles > maxFiles) {
+            errors.push(`You can upload a maximum of ${maxFiles} ${maxFiles > 1 ? "files" : "file"}.`);
         }
 
         newFiles.forEach((file) => {
@@ -168,15 +171,19 @@ const FileInput: React.FC<FormElement> = (formelementobj) => {
                 </div>
             )}
 
-            <div className="flex flex-col mb-6 w-full md:w-2/3 bg-white shadow-md rounded-lg p-4">
-                <span>
+            <div className="mb-4">
+                <span className="text-sm font-semibold text-gray-800 flex items-center">
                     {formelementobj.label}
                     {formelementobj.required && <span className="text-red-500 ml-1">*</span>}
                 </span>
 
+                {/* File Upload Button */}
                 <label
                     htmlFor={formelementobj.id}
-                    className="cursor-pointer bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-200"
+                    className="cursor-pointer bg-blue-500 text-white font-medium text-sm px-3 py-1.5 rounded-md shadow 
+                   hover:bg-blue-600 hover:shadow-md transition duration-150 ease-in-out 
+                   active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-300 
+                   inline-flex items-center justify-center gap-1"
                 >
                     Choose Files
                 </label>

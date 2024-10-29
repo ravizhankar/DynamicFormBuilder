@@ -11,7 +11,7 @@ const SelectInput: React.FC<FormElement> = (forelementobj) => {
     // Set field properties on component mount
     useEffect(() => {
         setFieldProperties(forelementobj.id, forelementobj);
-    }, [forelementobj, setFieldProperties]);
+    }, []);
 
     const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         const newValue = event.target.value;

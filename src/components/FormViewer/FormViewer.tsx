@@ -32,10 +32,10 @@ const FormViewer: React.FC = () => {
 
   return (
     <FormProvider>
-      <div>
+      <div >
         {formData ? (
           <>
-            <h1 className="text-4xl font-extrabold text-center text-gray-800 mb-4">
+            <h1 className="text-4xl  font-extrabold text-center text-gray-800 mb-4">
               {formData.title}
             </h1>
 

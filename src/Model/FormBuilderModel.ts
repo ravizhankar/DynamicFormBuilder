@@ -27,7 +27,8 @@ export interface FormElement {
   minFiles?: number;
   maxSizeInMB?: number;
   allowedFileTypes?: string[];
-  rows?: number;  
+  rows?: number;
+  pagegridcolumn?: number;
 }
 
 export interface FormData {

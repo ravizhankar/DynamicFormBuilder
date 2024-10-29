@@ -119,7 +119,7 @@ const TabsAndNavigation: React.FC<FormViewerProps> = (
                                     if (Page.isformsubmitted || index === FormViewerPropsObj.currentPageIndex) {
                                         handleTabClick(index); // Correctly call the function here
                                     } else {
-                                       // console.log('Page not clickable'); // Optional feedback
+                                        // console.log('Page not clickable'); // Optional feedback
                                     }
                                 }}
 
@@ -132,30 +132,37 @@ const TabsAndNavigation: React.FC<FormViewerProps> = (
             )}
 
 
-            {currentPage?.elements?.length > 0 && (
-                <Page title={currentPage.title} elements={currentPage.elements} />
-            )}
-            <br/>
+            {currentPage && currentPage.elements?.length > 0 &&
+                currentPage.pagegridcolumn != null &&  // Check that pagegridcolumn exists
+                (
+                    <Page
+                        title={currentPage.title}
+                        elements={currentPage.elements}
+                        pagegridcolumn={currentPage.pagegridcolumn}
+                    />
+                )
+            }
+
+            <br />
             {currentPage?.elements?.length > 0 && (
                 <div className="flex justify-center space-x-4">
-                <button
-                  className={`px-6 py-2 bg-customBlue text-white rounded hover:bg-customblue focus:outline-none focus:ring ${
-                    FormViewerPropsObj.disablePrevious ? 'cursor-not-allowed opacity-50' : ''
-                  }`}
-                  onClick={handlePrevious}
-                  disabled={FormViewerPropsObj.disablePrevious}
-                >
-                  Previous
-                </button>
-                <button
-                  className="px-6 py-2 bg-customBlue text-white rounded hover:bg-customBlue focus:outline-none focus:ring"
-                  onClick={handleNext}
-                >
-                  {isLastPage() ? 'Submit' : 'Next'}
-                </button>
-              </div>
-              
-              
+                    <button
+                        className={`px-6 py-2 bg-customBlue text-white rounded hover:bg-customblue focus:outline-none focus:ring ${FormViewerPropsObj.disablePrevious ? 'cursor-not-allowed opacity-50' : ''
+                            }`}
+                        onClick={handlePrevious}
+                        disabled={FormViewerPropsObj.disablePrevious}
+                    >
+                        Previous
+                    </button>
+                    <button
+                        className="px-6 py-2 bg-customBlue text-white rounded hover:bg-customBlue focus:outline-none focus:ring"
+                        onClick={handleNext}
+                    >
+                        {isLastPage() ? 'Submit' : 'Next'}
+                    </button>
+                </div>
+
+
             )}
 
             {/* Display Thank You Popup */}

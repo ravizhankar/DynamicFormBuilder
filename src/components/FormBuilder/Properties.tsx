@@ -31,6 +31,7 @@ const Properties = ({
   const fileTypes = ["jpg", "png", "pdf"];
 
   const AlignmentOptions = ["Vertical", "Horizontal"];
+  const PageGridColumnOptions = [1, 2, 3];
 
   // Check if all individual file types are selected, and set "Select All" accordingly
   useEffect(() => {
@@ -74,12 +75,9 @@ const Properties = ({
 
   const handleMultipleFilesCheckboxChange = (
     e: React.ChangeEvent<HTMLInputElement>
-  ) => {    
+  ) => {        
     const { name, checked } = e.target;
-    setSelectedElement({ ...selectedElement, [name]: checked });
-    if (!checked) {
-      setSelectedElement({ ...selectedElement, maxFiles: 1 });
-    }
+    setSelectedElement({ ...selectedElement, [name]: checked });    
   };
 
   const handlePatternDropdownChange = (
@@ -111,7 +109,17 @@ const Properties = ({
     e: React.ChangeEvent<HTMLSelectElement>
   ) => {
     const selectedValue = e.target.value;
-    setSelectedElement({ ...selectedElement, ["alignment"]: selectedValue });
+    setSelectedElement({
+      ...selectedElement,
+      ["alignment"]: selectedValue,
+    });
+  };
+
+  const handlePageGridColumnDropdownChange = (
+    e: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    const selectedValue = parseInt(e.target.value);
+    setSelectedElement({ ...selectedElement, ["pagegridcolumn"]: selectedValue });
   };
 
   // Handle changes for minLength
@@ -372,6 +380,27 @@ const Properties = ({
           className="w-full p-2 border border-gray-300 rounded"
         />
       </div>
+      {/* pagegridcolumn */}
+      {selectedElement.type === "pagename" && (
+        <>
+          <div className="mb-4">
+            <label className="block font-semibold text-sm mb-1">
+              Page column
+            </label>
+            <select
+              value={selectedElement.pagegridcolumn}
+              onChange={handlePageGridColumnDropdownChange}
+              className="p-2 border border-gray-400 rounded-lg"
+            >
+              {PageGridColumnOptions.map((option, index) => (
+                <option key={index} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
+          </div>
+        </>
+      )}
       {/* placeHolder */}
       {(selectedElement.type === "text" ||
         selectedElement.type === "textarea") && (

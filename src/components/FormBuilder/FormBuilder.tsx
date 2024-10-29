@@ -34,6 +34,8 @@ const FormBuilder: React.FC = () => {
   const [activePageId, setActivePageId] = useState<string | null>(null);
 
   const addPage = () => {
+    setSelectedElement(null);
+    setIsPropertiesVisible(false);
     const newPageId = `page-${Date.now()}`;
 
     const PageElement: FormElement = {
@@ -61,6 +63,7 @@ const FormBuilder: React.FC = () => {
       maxSizeInMB: 0,
       allowedFileTypes: [],
       rows: 0,
+      pagegridcolumn: 1,
     };
 
     const PageHeaderElement: FormElement = {
@@ -584,7 +587,7 @@ const FormBuilder: React.FC = () => {
       }
     }
 
-    if (targetIndex === -1 && active.id.includes("-")) return;   
+    if (targetIndex === -1 && active.id.includes("-")) return;
     if (pageFooterIndex > 0 && targetIndex >= pageFooterIndex) {
       if (!active.id.includes("-")) {
         targetIndex = targetIndex - 1;
@@ -843,6 +846,7 @@ const FormBuilder: React.FC = () => {
       isformsubmitted: false,
       pages: Array.from(pages.entries()).map(([id, elements]) => {
         let pageTitle = "Untitled Page";
+        let pagegridcolumn = 0;
         const pageNameElement = elements.elements.filter(
           (element) => element.type === "pagename"
         );
@@ -851,9 +855,17 @@ const FormBuilder: React.FC = () => {
             ? "" + pageNameElement[0].label?.toString()
             : "Untitled Page";
 
+        pagegridcolumn =
+          pageNameElement.length > 0
+            ? pageNameElement[0].pagegridcolumn
+              ? pageNameElement[0].pagegridcolumn
+              : 0
+            : 0;
+
         return {
           title: pageTitle,
           isformsubmitted: false,
+          pagegridcolumn: pagegridcolumn,
           elements: elements.elements
             .filter((ele) => ele.type !== "pagename")
             .map((element) => ({
@@ -1063,7 +1075,7 @@ const FormBuilder: React.FC = () => {
                     <div
                       onClick={() => handlePageClick(page)}
                       className={`block p-2 rounded cursor-pointer ${
-                        activePageId === page.id ? "bg-blue-200" : "bg-gray-200"
+                        activePageId === page.id ? "bg-green-300" : "bg-gray-200"
                       } mb-2`}
                     >
                       {/* Display the label of the element with type "pagename" */}

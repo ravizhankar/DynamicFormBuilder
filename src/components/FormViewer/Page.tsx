@@ -5,9 +5,10 @@ import Element from './Element';
 interface PageProps {
     title: string;
     elements: FormElement[];
+    pagegridcolumn:number;
 }
 
-const Page: React.FC<PageProps> = ({ title, elements  }) => {
+const Page: React.FC<PageProps> = ({ title, elements,pagegridcolumn }) => {
    
    useEffect(() => {
     if (elements.length > 0) {
@@ -25,8 +26,16 @@ const Page: React.FC<PageProps> = ({ title, elements  }) => {
    
 
     return (
-        <div className="rounded-lg p-5 bg-gray-100 shadow-md mx-4 sm:mx-8 lg:mx-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+        <div className="rounded-lg p-5 bg-white-100 shadow-md mx-4 sm:mx-8 lg:mx-12">
+       <div
+    className={`grid gap-3 ${
+        pagegridcolumn === 1 
+            ? 'grid-cols-1' 
+            : pagegridcolumn === 2 
+            ? 'grid-cols-2' 
+            : 'grid-cols-3'
+    }`}
+>
             {elements.length > 0 ? (
                 elements.map((element) => (
                     <Element
