@@ -54,13 +54,38 @@ export const Toolbox: React.FC = () => {
             </h3>
             <div className="grid grid-cols-1 gap-2">
               <div className="transition duration-200 transform hover:scale-105 text-sm">
-                <DraggableItemToolBox id={ITEM_TYPES.RADIO} label="Radio" />
+                <DraggableItemToolBox
+                  id={ITEM_TYPES.HEADERTEXT}
+                  label="Section title"
+                />
               </div>
+              <div className="transition duration-200 transform hover:scale-105 text-sm">
+                <DraggableItemToolBox
+                  id={ITEM_TYPES.PAGEHEADERTEXT}
+                  label="Header Instructions"
+                />
+              </div>
+              <div className="transition duration-200 transform hover:scale-105 text-sm">
+                <DraggableItemToolBox
+                  id={ITEM_TYPES.PAGEFOOTERTEXT}
+                  label="Footer Instructions"
+                />
+              </div>
+              <h3 className="text-md font-semibold text-gray-600 mb-4 border-b pb-2"></h3>
               <div className="transition duration-200 transform hover:scale-105 text-sm">
                 <DraggableItemToolBox
                   id={ITEM_TYPES.TEXTBOX}
                   label="Text box"
                 />
+              </div>
+              <div className="transition duration-200 transform hover:scale-105 text-sm">
+                <DraggableItemToolBox
+                  id={ITEM_TYPES.TEXTAREA}
+                  label="Text area"
+                />
+              </div>
+              <div className="transition duration-200 transform hover:scale-105 text-sm">
+                <DraggableItemToolBox id={ITEM_TYPES.RADIO} label="Radio" />
               </div>
               <div className="transition duration-200 transform hover:scale-105 text-sm">
                 <DraggableItemToolBox
@@ -76,12 +101,6 @@ export const Toolbox: React.FC = () => {
               </div>
               <div className="transition duration-200 transform hover:scale-105 text-sm">
                 <DraggableItemToolBox
-                  id={ITEM_TYPES.HEADERTEXT}
-                  label="Section title"
-                />
-              </div>
-              <div className="transition duration-200 transform hover:scale-105 text-sm">
-                <DraggableItemToolBox
                   id={ITEM_TYPES.DATEPICKER}
                   label="Date picker"
                 />
@@ -90,24 +109,6 @@ export const Toolbox: React.FC = () => {
                 <DraggableItemToolBox
                   id={ITEM_TYPES.FILEUPLOAD}
                   label="File upload"
-                />
-              </div>
-              <div className="transition duration-200 transform hover:scale-105 text-sm">
-                <DraggableItemToolBox
-                  id={ITEM_TYPES.TEXTAREA}
-                  label="Text area"
-                />
-              </div>
-              <div className="transition duration-200 transform hover:scale-105 text-sm">
-                <DraggableItemToolBox
-                  id={ITEM_TYPES.PAGEHEADERTEXT}
-                  label="Header Instructions"
-                />
-              </div>
-              <div className="transition duration-200 transform hover:scale-105 text-sm">
-                <DraggableItemToolBox
-                  id={ITEM_TYPES.PAGEFOOTERTEXT}
-                  label="Footer Instructions"
                 />
               </div>
             </div>

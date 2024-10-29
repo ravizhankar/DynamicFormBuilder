@@ -41,19 +41,22 @@ const FormBuildArea = ({
     setIsToolboxVisible(false);
   };
 
+  const pageNameIndex = elements.findIndex((el) => el.type === "pagename");
+
+  const gridClass =
+    pageNameIndex !== -1
+      ? elements[pageNameIndex].pagegridcolumn === 1
+        ? "grid-cols-1"
+        : elements[pageNameIndex].pagegridcolumn === 2
+        ? "grid-cols-2"
+        : "grid-cols-3"
+      : "";
+
   return (
     <>
       <Dropzone>
         <SortableContext items={elements} strategy={rectSortingStrategy}>
-          <div
-            className={`grid gap-3 ${
-              elements[0].pagegridcolumn === 1
-                ? "grid-cols-1"
-                : elements[0].pagegridcolumn === 2
-                ? "grid-cols-2"
-                : "grid-cols-3"
-            }`}
-          >            
+          <div className={`grid gap-3 ${gridClass}`}>
             {elements.map(
               (element) =>
                 element.type !== "pagename" && (
