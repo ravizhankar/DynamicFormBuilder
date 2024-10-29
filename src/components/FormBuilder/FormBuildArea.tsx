@@ -22,6 +22,7 @@ const FormBuildArea = ({
   setIsPropertiesVisible,
   overId,
   setIsToolboxVisible,
+  isToolboxVisible,
 }: {
   elements: FormElement[];
   selectedElement: FormElement | null;
@@ -33,7 +34,8 @@ const FormBuildArea = ({
   isPropertiesVisible: true | false | null;
   setIsPropertiesVisible: (element: true | false) => void;
   overId: string | null;
-    setIsToolboxVisible: (element: true | false) => void;
+  setIsToolboxVisible: (element: true | false) => void;
+  isToolboxVisible: true | false | null;
 }) => {
   const handleElementClick = (element: FormElement) => {
     setSelectedElement(element);
@@ -52,6 +54,8 @@ const FormBuildArea = ({
         : "grid-cols-3"
       : "";
 
+  let gridcolumnsize = elements[pageNameIndex]?.pagegridcolumn ?? 1;
+  
   return (
     <>
       <Dropzone>
@@ -79,6 +83,8 @@ const FormBuildArea = ({
                       removeItem={removeItem}
                       handleElementClick={handleElementClick}
                       isPropertiesVisible={isPropertiesVisible}
+                      gridcolumnsize={gridcolumnsize}
+                      isToolboxVisible={isToolboxVisible}
                     />
                   </div>
                 )

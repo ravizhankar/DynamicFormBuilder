@@ -19,6 +19,8 @@ const DraggableItemFormBuildArea = ({
   removeItem,
   handleElementClick,
   isPropertiesVisible,
+  gridcolumnsize,
+  isToolboxVisible,
 }: {
   element: FormElement;
   selectedElement: FormElement | null;
@@ -27,7 +29,9 @@ const DraggableItemFormBuildArea = ({
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => void;
   handleElementClick: (element: FormElement) => void;
-  isPropertiesVisible: true | false | null;  
+  isPropertiesVisible: true | false | null;
+  gridcolumnsize: number;
+  isToolboxVisible: true | false | null;
 }) => {
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({
@@ -68,11 +72,16 @@ const DraggableItemFormBuildArea = ({
         element.type !== "pagefootertext" && (
           <label
             className="flex items-center mb-2 text-sm font-semibold text-gray-800"
-            style={
-              isPropertiesVisible === true
-                ? { width: "70px" }
-                : { width: "90px" }
-            }
+            style={{
+              width:
+                gridcolumnsize === 3
+                  ? "70px"
+                  : gridcolumnsize === 1 || gridcolumnsize === 2
+                  ? "110px"
+                  : isPropertiesVisible
+                  ? "80px"
+                  : "150px",
+            }}
           >
             {selectedElement?.id === element.id
               ? selectedElement.label
@@ -93,11 +102,25 @@ const DraggableItemFormBuildArea = ({
       )}
       {element.type === "text" && (
         <input
-          style={
-            isPropertiesVisible === true
-              ? { width: "80px" }
-              : { width: "150px" }
-          }
+          style={{
+            width:
+              isToolboxVisible === true
+                ? gridcolumnsize === 3
+                  ? "35px"
+                  : gridcolumnsize === 1 || gridcolumnsize === 2
+                  ? "150px"
+                  : isPropertiesVisible
+                  ? "80px"
+                  : "150px"
+                : gridcolumnsize === 3
+                ? "110px"
+                : gridcolumnsize === 1 || gridcolumnsize === 2
+                ? "220px"
+                : isPropertiesVisible
+                ? "80px"
+                : "150px",
+          }}
+          size={gridcolumnsize}
           type="text"
           id={element.id}
           value={element.value}
@@ -133,6 +156,24 @@ const DraggableItemFormBuildArea = ({
       )}
       {element.type === "textarea" && (
         <textarea
+          style={{
+            width:
+              isToolboxVisible === true
+                ? gridcolumnsize === 3
+                  ? "35px"
+                  : gridcolumnsize === 1 || gridcolumnsize === 2
+                  ? "150px"
+                  : isPropertiesVisible
+                  ? "80px"
+                  : "150px"
+                : gridcolumnsize === 3
+                ? "110px"
+                : gridcolumnsize === 1 || gridcolumnsize === 2
+                ? "220px"
+                : isPropertiesVisible
+                ? "80px"
+                : "150px",
+          }}
           id={element.id}
           value={element.value}
           placeholder={
@@ -165,11 +206,24 @@ const DraggableItemFormBuildArea = ({
       )}
       {element.type === "file" && (
         <input
-          style={
-            isPropertiesVisible === true
-              ? { width: "80px" }
-              : { width: "150px" }
-          }
+          style={{
+            width:
+              isToolboxVisible === true
+                ? gridcolumnsize === 3
+                  ? "35px"
+                  : gridcolumnsize === 1 || gridcolumnsize === 2
+                  ? "150px"
+                  : isPropertiesVisible
+                  ? "80px"
+                  : "150px"
+                : gridcolumnsize === 3
+                ? "110px"
+                : gridcolumnsize === 1 || gridcolumnsize === 2
+                ? "220px"
+                : isPropertiesVisible
+                ? "80px"
+                : "150px",
+          }}
           type="file"
           id={element.id}
           value={element.value}
@@ -205,11 +259,24 @@ const DraggableItemFormBuildArea = ({
       )}
       {element.type === "date" && (
         <input
-          style={
-            isPropertiesVisible === true
-              ? { width: "80px" }
-              : { width: "150px" }
-          }
+          style={{
+            width:
+              isToolboxVisible === true
+                ? gridcolumnsize === 3
+                  ? "35px"
+                  : gridcolumnsize === 1 || gridcolumnsize === 2
+                  ? "150px"
+                  : isPropertiesVisible
+                  ? "80px"
+                  : "150px"
+                : gridcolumnsize === 3
+                ? "110px"
+                : gridcolumnsize === 1 || gridcolumnsize === 2
+                ? "220px"
+                : isPropertiesVisible
+                ? "80px"
+                : "150px",
+          }}
           type="date"
           id={element.id}
           value={element.value}
@@ -303,11 +370,24 @@ const DraggableItemFormBuildArea = ({
       </div>
       {element.type === "select" && (
         <select
-          style={
-            isPropertiesVisible === true
-              ? { width: "80px" }
-              : { width: "150px" }
-          }
+          style={{
+            width:
+              isToolboxVisible === true
+                ? gridcolumnsize === 3
+                  ? "35px"
+                  : gridcolumnsize === 1 || gridcolumnsize === 2
+                  ? "150px"
+                  : isPropertiesVisible
+                  ? "80px"
+                  : "150px"
+                : gridcolumnsize === 3
+                ? "110px"
+                : gridcolumnsize === 1 || gridcolumnsize === 2
+                ? "220px"
+                : isPropertiesVisible
+                ? "80px"
+                : "150px",
+          }}
           id={element.id}
           value={element.value}
           className="p-1 border border-gray-400 rounded-lg cursor-pointer"

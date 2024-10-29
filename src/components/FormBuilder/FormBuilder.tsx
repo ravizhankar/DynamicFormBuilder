@@ -1075,7 +1075,9 @@ const FormBuilder: React.FC = () => {
                     <div
                       onClick={() => handlePageClick(page)}
                       className={`block p-2 rounded cursor-pointer ${
-                        activePageId === page.id ? "bg-green-300" : "bg-gray-200"
+                        activePageId === page.id
+                          ? "bg-green-300"
+                          : "bg-gray-200"
                       } mb-2`}
                     >
                       {/* Display the label of the element with type "pagename" */}
@@ -1113,6 +1115,7 @@ const FormBuilder: React.FC = () => {
               setIsPropertiesVisible={setIsPropertiesVisible}
               overId={overId}
               setIsToolboxVisible={setIsToolboxVisible}
+              isToolboxVisible={isToolboxVisible}
             />
           )}
         </div>
